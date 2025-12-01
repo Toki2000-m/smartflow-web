@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API from '../api'; // ✅ Importar la instancia configurada
 import {
   BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip,
@@ -7,7 +8,7 @@ import {
 
 const Metricas = () => {
   const [loading, setLoading] = useState(true);
-  const [vistaIngresos, setVistaIngresos] = useState('semana'); // semana, mes, rango
+  const [vistaIngresos, setVistaIngresos] = useState('semana');
   const [ingresos, setIngresos] = useState([]);
   const [citasEstado, setCitasEstado] = useState([]);
   const [pacientesTipo, setPacientesTipo] = useState([]);
@@ -48,29 +49,29 @@ const Metricas = () => {
 
     setLoading(true);
     try {
-      const baseURL = 'http://localhost:3000/api/web/appointments/metrics';
-      
-      // Cargar datos según la vista seleccionada
-      let endpoint = '';
+      // ✅ Usar rutas relativas con API de Axios
+      let endpointIngresos = '';
       if (vistaIngresos === 'semana') {
-        endpoint = `${baseURL}/ingresos-semanales?medicoId=${medicoId}`;
+        endpointIngresos = `/appointments/metrics/ingresos-semanales?medicoId=${medicoId}`;
       } else if (vistaIngresos === 'mes') {
-        endpoint = `${baseURL}/ingresos-mensuales?medicoId=${medicoId}`;
+        endpointIngresos = `/appointments/metrics/ingresos-mensuales?medicoId=${medicoId}`;
       } else {
-        endpoint = `${baseURL}/ingresos-mensuales?medicoId=${medicoId}`; // Por defecto mensual
+        endpointIngresos = `/appointments/metrics/ingresos-mensuales?medicoId=${medicoId}`;
       }
 
+      // ✅ Usar Promise.all con API de Axios
       const [ingresosRes, citasRes, pacientesRes, horariosRes] = await Promise.all([
-        fetch(endpoint),
-        fetch(`${baseURL}/citas-estado?medicoId=${medicoId}`),
-        fetch(`${baseURL}/pacientes-tipo?medicoId=${medicoId}`),
-        fetch(`${baseURL}/horarios-demanda?medicoId=${medicoId}`)
+        API.get(endpointIngresos),
+        API.get(`/appointments/metrics/citas-estado?medicoId=${medicoId}`),
+        API.get(`/appointments/metrics/pacientes-tipo?medicoId=${medicoId}`),
+        API.get(`/appointments/metrics/horarios-demanda?medicoId=${medicoId}`)
       ]);
 
-      const ingresosData = await ingresosRes.json();
-      const citasData = await citasRes.json();
-      const pacientesData = await pacientesRes.json();
-      const horariosData = await horariosRes.json();
+      // ✅ Con Axios, los datos vienen en .data
+      const ingresosData = ingresosRes.data;
+      const citasData = citasRes.data;
+      const pacientesData = pacientesRes.data;
+      const horariosData = horariosRes.data;
 
       // Procesar horarios
       const horariosOrdenados = Array.isArray(horariosData) 
@@ -112,7 +113,6 @@ const Metricas = () => {
       const arrayIngresos = Array.isArray(ingresosData) ? ingresosData : [];
       const totalIngresos = arrayIngresos.reduce((sum, item) => sum + (item.total || 0), 0);
       
-      // Comparar con periodo anterior (última vs penúltima)
       const ultimoPeriodo = arrayIngresos[arrayIngresos.length - 1]?.total || 0;
       const penultimoPeriodo = arrayIngresos[arrayIngresos.length - 2]?.total || 0;
       const cambio = penultimoPeriodo > 0 
