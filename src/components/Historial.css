@@ -1,0 +1,788 @@
+.historial-citas {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+.page-header-historial {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.page-header-historial h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.page-header-historial .header-icon {
+  font-size: 32px;
+  color: #007bff;
+}
+
+/* FILTROS */
+.filtros-container {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: grid;
+  gap: 20px;
+}
+
+.filtro-busqueda {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.filtro-busqueda .input-icon {
+  position: absolute;
+  left: 15px;
+  color: #6c757d;
+  font-size: 22px;
+}
+
+.filtro-busqueda input {
+  width: 100%;
+  padding: 12px 12px 12px 50px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+.filtro-busqueda input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+.filtros-fecha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.fecha-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fecha-input-group label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: #495057;
+  font-size: 14px;
+}
+
+.fecha-input-group label .material-icons {
+  font-size: 18px;
+  color: #007bff;
+}
+
+.fecha-input-group input {
+  padding: 10px 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.fecha-input-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.btn-limpiar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  justify-self: start;
+}
+
+.btn-limpiar:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.btn-limpiar .material-icons {
+  font-size: 18px;
+}
+
+/* RESULTADOS INFO */
+.resultados-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #e7f3ff;
+  border-left: 4px solid #007bff;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.resultados-info > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.resultados-info .material-icons {
+  color: #007bff;
+  font-size: 20px;
+}
+
+.resultados-info p {
+  margin: 0;
+  color: #0056b3;
+  font-weight: 500;
+}
+
+.items-per-page {
+  padding: 8px 12px;
+  border: 2px solid #007bff;
+  border-radius: 6px;
+  background: white;
+  color: #007bff;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.items-per-page:hover {
+  background: #007bff;
+  color: white;
+}
+
+.items-per-page:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #6c757d;
+}
+
+.empty-state .material-icons {
+  font-size: 64px;
+  color: #dee2e6;
+  margin-bottom: 15px;
+}
+
+.empty-state p {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* LISTA DE HISTORIAL */
+.historial-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 20px;
+}
+
+.historial-item {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s;
+}
+
+.historial-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* HEADER DE CITA */
+.cita-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.paciente-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-icon {
+  font-size: 32px;
+  color: #007bff;
+}
+
+.paciente-nombre {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.badge-success {
+  background: #d4edda;
+  color: #155724;
+}
+
+.badge .material-icons {
+  font-size: 16px;
+}
+
+/* DETALLES DE CITA */
+.cita-detalles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.detalle-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.detalle-item:hover {
+  background: #e9ecef;
+}
+
+.detalle-item .material-icons {
+  font-size: 22px;
+  color: #007bff;
+  margin-top: 2px;
+}
+
+.detalle-item > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.detalle-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6c757d;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detalle-value {
+  font-size: 15px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.detalle-id {
+  grid-column: 1 / -1;
+  background: #fff3cd;
+}
+
+.detalle-id .material-icons {
+  color: #856404;
+}
+
+.detalle-id .detalle-value {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  word-break: break-all;
+}
+
+/* NOTAS CONSULTA */
+.notas-consulta {
+  grid-column: 1 / -1;
+  background: #e7f3ff;
+  padding: 16px;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.notas-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.notas-header .material-icons {
+  color: #0056b3;
+  font-size: 20px;
+}
+
+.notas-header strong {
+  color: #0056b3;
+  font-size: 14px;
+}
+
+.notas-consulta p {
+  margin: 0;
+  color: #495057;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* ACCIONES */
+.acciones {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.btn-ver-receta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.btn-ver-receta:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.btn-ver-receta .material-icons {
+  font-size: 18px;
+}
+
+/* PAGINACIÓN */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  flex-wrap: wrap;
+}
+
+.pagination-numbers {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination-btn {
+  padding: 8px 14px;
+  border: 2px solid #e9ecef;
+  background: white;
+  color: #495057;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  border-color: #007bff;
+  color: #007bff;
+  transform: translateY(-1px);
+}
+
+.pagination-btn.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+}
+
+.pagination-nav .material-icons {
+  font-size: 18px;
+}
+
+.pagination-dots {
+  padding: 8px 4px;
+  color: #6c757d;
+  font-weight: 600;
+  user-select: none;
+}
+
+/* MODAL */
+.sf-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.sf-modal {
+  background: white;
+  border-radius: 16px;
+  padding: 0;
+  max-width: 700px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 30px;
+  border-bottom: 2px solid #f8f9fa;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.modal-header h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.modal-header .material-icons {
+  font-size: 28px;
+}
+
+.btn-close-modal {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.btn-close-modal:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-close-modal .material-icons {
+  color: white;
+  font-size: 24px;
+}
+
+.receta-view-modal {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.receta-view-modal > div:not(.modal-header) {
+  padding: 30px;
+  overflow: visible;
+}
+
+
+/* RECETA INFO */
+.receta-info {
+  display: grid;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.info-item .material-icons {
+  color: #007bff;
+  font-size: 24px;
+}
+
+.info-item div {
+  flex: 1;
+}
+
+.info-item strong {
+  display: block;
+  color: #495057;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.info-item p {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* MEDICAMENTOS */
+.medicamentos-receta {
+  margin-bottom: 30px;
+}
+
+.medicamentos-receta h4 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 18px;
+}
+
+.medicamentos-receta h4 .material-icons {
+  color: #28a745;
+  font-size: 24px;
+}
+
+.medicamento-detalle {
+  display: flex;
+  gap: 16px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  border-left: 4px solid #28a745;
+}
+
+.medicamento-numero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #28a745;
+  color: white;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.medicamento-info {
+  flex: 1;
+}
+
+.medicamento-info h5 {
+  margin: 0 0 12px 0;
+  color: #2c3e50;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.medicamento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.medicamento-grid > div {
+  font-size: 14px;
+  color: #495057;
+}
+
+.medicamento-grid strong {
+  display: block;
+  color: #6c757d;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+/* OBSERVACIONES */
+.observaciones-receta {
+  background: #fff3cd;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #ffc107;
+  margin-bottom: 20px;
+}
+
+.observaciones-receta h4 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px 0;
+  color: #856404;
+  font-size: 16px;
+}
+
+.observaciones-receta h4 .material-icons {
+  font-size: 20px;
+}
+
+.observaciones-receta p {
+  margin: 0;
+  color: #856404;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* MODAL ACTIONS */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 20px 30px;
+  border-top: 2px solid #f8f9fa;
+  background: #fafbfc;
+}
+
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.btn-secondary .material-icons {
+  font-size: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .filtros-fecha {
+    grid-template-columns: 1fr;
+  }
+
+  .resultados-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .items-per-page {
+    width: 100%;
+  }
+
+  .cita-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .cita-detalles {
+    grid-template-columns: 1fr;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+
+  .btn-ver-receta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .medicamento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pagination-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .pagination-nav {
+    width: 100%;
+    justify-content: center;
+  }
+}
+.texto-sin-receta {
+  color: #6c757d;
+  font-style: italic;
+  font-size: 14px;
+  padding: 10px 0;
+  display: inline-block;
+}

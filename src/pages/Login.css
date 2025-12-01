@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #e9f1f6, #f7fbfc);
+}
+
+/* WRAPPER */
+.login-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* PANEL */
+.login-panel {
+  background: white;
+  padding: 55px 40px;
+  border-radius: 22px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* LOGO CENTRADO */
+.login-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.login-logo img {
+  width: 80px;
+  height: auto;
+}
+
+/* TITULOS */
+.login-panel h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: #1f4f8a;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #2AAD99;
+  margin-bottom: 32px;
+}
+
+/* LABEL */
+.login-panel label {
+  display: block;
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* INPUT GROUP */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 14px 14px 38px;
+  border-radius: 12px;
+  border: 1px solid #dcdfe3;
+  font-size: 15px;
+  background: #f9fbfd;
+  transition: 0.25s;
+}
+
+.input-group input:focus {
+  border-color: #1f7acb;
+  box-shadow: 0 0 6px rgba(31, 122, 203, 0.3);
+  outline: none;
+}
+
+/* ICONOS */
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #7d8592;
+}
+
+/* BOTÓN */
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.login-panel button {
+  width: 100%;
+  max-width: 250px;
+  padding: 15px;
+  background-color: #00a7b8;
+  border-radius: 14px;
+  border: none;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 6px 18px rgba(0, 167, 184, 0.25);
+}
+
+.login-panel button:hover {
+  background-color: #1b5fae;
+  box-shadow: 0 8px 22px rgba(27, 95, 174, 0.35);
+}
+
+/* LINK */
+.forgot {
+  margin-top: 16px;
+  display: block;
+  font-size: 14px;
+  text-decoration: none;
+  color: #1f7acb;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+/* ERROR */
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+/* ANIMACIÓN */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

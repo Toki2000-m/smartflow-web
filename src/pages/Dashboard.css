@@ -1,0 +1,280 @@
+:root {
+  --primary: #2A6FB0;
+  --secondary: #57B894;
+  --accent: #00A9B7;
+  --bg: #F4F7F9;
+  --text: #333333;
+  --muted: #6b7280;
+  --white: #ffffff;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --success: #10B981;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  height: 100%;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--text);
+  margin: 0;
+}
+
+.dashboard-wrapper {
+  display: flex;
+  height: 100vh;
+  background: var(--bg);
+}
+
+.dashboard-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dashboard-view {
+  padding: 28px;
+  overflow: auto;
+}
+
+/* ==================== HEADER MEJORADO ==================== */
+.page-header {
+  background: var(--white);
+  padding: 24px 28px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-bottom: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-header h2 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.page-header h2 .user-name {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.page-sub {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ==================== GRID MEJORADO ==================== */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+/* ==================== CARDS MEJORADAS ==================== */
+.card {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-left: 4px solid var(--primary);
+  min-height: 160px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 100px;
+  background: var(--primary);
+  opacity: 0.03;
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+}
+
+/* Top row: icon + number */
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.card-icon {
+  font-size: 32px;
+  color: var(--primary);
+  background: rgba(42, 111, 176, 0.1);
+  padding: 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.card:hover .card-icon {
+  background: var(--primary);
+  color: var(--white);
+  transform: scale(1.1);
+}
+
+.card-number {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+
+/* Variantes de colores para diferentes cards */
+.card[data-color="warning"] {
+  border-left-color: var(--warning);
+}
+
+.card[data-color="warning"] .card-icon {
+  color: var(--warning);
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.card[data-color="danger"] {
+  border-left-color: var(--danger);
+}
+
+.card[data-color="danger"] .card-icon {
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.card[data-color="danger"]:hover .card-icon {
+  background: var(--danger);
+  color: var(--white);
+}
+
+.card[data-color="secondary"] {
+  border-left-color: var(--secondary);
+}
+
+.card[data-color="secondary"] .card-icon {
+  color: var(--secondary);
+  background: rgba(87, 184, 148, 0.1);
+}
+
+.card[data-color="secondary"]:hover .card-icon {
+  background: var(--secondary);
+  color: var(--white);
+}
+
+.card[data-color="accent"] {
+  border-left-color: var(--accent);
+}
+
+.card[data-color="accent"] .card-icon {
+  color: var(--accent);
+  background: rgba(0, 169, 183, 0.1);
+}
+
+.card[data-color="accent"]:hover .card-icon {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* Títulos y texto */
+.card h4 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0;
+}
+
+/* ==================== LOADING STATE ==================== */
+.card-number.loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+  width: 80px;
+  height: 36px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ==================== PLACEHOLDER VIEWS ==================== */
+.placeholder {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  text-align: center;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1200px) {
+  .home-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .page-header h2 {
+    font-size: 24px;
+  }
+  
+  .dashboard-view {
+    padding: 16px;
+  }
+  
+  .card {
+    min-height: 140px;
+  }
+  
+  .card-number {
+    font-size: 28px;
+  }
+  
+  .card-icon {
+    font-size: 28px;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,491 @@
+/* ===== CitasProximas.css ===== */
+
+/* Paleta: Azul Primario #2A6FB0, Verde Secundario #57B894, Gris Base #F4F7F9, Texto #333, Acento Turquesa #00A9B7 */
+
+.citas-proximas {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #F4F7F9;
+  padding: 20px;
+  color: #333333;
+}
+
+.citas-proximas h2 {
+  color: #2A6FB0;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #57B894;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tabs button.active {
+  background-color: #2A6FB0;
+}
+
+.tabs button:hover {
+  background-color: #2A6FB0;
+}
+
+.citas-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cita-item {
+  background-color: #fff;
+  border-left: 4px solid #00A9B7;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.cita-item.atrasada {
+  border-left-color: #FF6B6B;
+  opacity: 0.85;
+}
+
+.cita-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.estado {
+  text-transform: capitalize;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #fff;
+}
+
+.estado.pendiente {
+  background-color: #57B894;
+}
+
+.estado.reprogramada {
+  background-color: #F59E0B;
+}
+
+/* ⬅️ AGREGAR ESTA LÍNEA */
+.estado.completada {
+  background-color: #2A6FB0;
+}
+
+.estado.cancelada {
+  background-color: #FF6B6B;
+}
+
+.cita-item p {
+  margin: 2px 0;
+  font-size: 14px;
+}
+
+.acciones {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.acciones button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.btn-completar {
+  background-color: #2A6FB0;
+  color: #fff;
+}
+
+.btn-completar:hover {
+  background-color: #1f5590;
+}
+
+.btn-cancelar {
+  background-color: #FF6B6B;
+  color: #fff;
+}
+
+.btn-cancelar:hover {
+  background-color: #e05555;
+}
+
+/* ===== Modal ===== */
+.sf-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.sf-modal {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  min-width: 300px;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.sf-modal h3 {
+  color: #2A6FB0;
+  margin-bottom: 16px;
+  font-size: 20px;
+}
+
+.sf-modal p {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.btn-primary {
+  background-color: #2A6FB0;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #1f5590;
+}
+
+.btn-close {
+  background-color: #ccc;
+  color: #333;
+  border-radius: 6px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  background-color: #999;
+}
+
+/* Formulario de creación de cita */
+.create-form label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.create-form input,
+.create-form select {
+  width: 100%;
+  padding: 6px 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.atrasadas-title {
+  color: #FF6B6B;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Ajustes del calendario */
+.rbc-calendar {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rbc-toolbar button {
+  background-color: #57B894;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  padding: 4px 8px;
+  margin-right: 4px;
+}
+
+.rbc-toolbar button:hover {
+  background-color: #2A6FB0;
+}
+
+/* ===== Autocomplete Paciente ===== */
+.autocomplete-container {
+  position: relative;
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 150px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 0;
+  margin: 2px 0 0 0;
+  list-style: none;
+}
+
+.suggestions-list li {
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.suggestions-list li:hover {
+  background-color: #2A6FB0;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.badge-specialty {
+  display: inline-block;
+  padding: 4px 12px;
+  margin-left: 8px;
+  background: #57B894;
+  color: white;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn-iniciar {
+  background-color: #10b981;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.consulta-modal {
+  max-width: 700px;
+}
+
+.datos-cita {
+  background: #f3f4f6;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.btn-receta {
+  background-color: #3b82f6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn-finalizar {
+  background-color: #10b981;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.receta-modal {
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.medicamentos-lista {
+  margin-bottom: 20px;
+}
+
+.medicamento-item {
+  background: #f9fafb;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #e5e7eb;
+}
+
+.medicamento-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.btn-eliminar-med {
+  background: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.btn-agregar-med {
+  background: #3b82f6;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-guardar-receta {
+  background: #10b981;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.observaciones-receta {
+  margin-bottom: 20px;
+}
+/* ===== Calendario Avanzado ===== */
+
+/* Contenedor general del calendario */
+.rbc-calendar {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Barra superior (toolbar) */
+.rbc-toolbar {
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rbc-toolbar button {
+  background-color: #57B894;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.rbc-toolbar button:hover {
+  background-color: #2A6FB0;
+}
+
+/* Eventos dentro del calendario */
+.rbc-event {
+  border-radius: 8px !important;
+  padding: 6px !important;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rbc-event:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Diferenciación por estado */
+.rbc-event.pendiente {
+  background-color: #57B894 !important;
+  color: #fff !important;
+}
+
+.rbc-event.reprogramada {
+  background-color: #F59E0B !important;
+  color: #fff !important;
+}
+
+.rbc-event.cancelada {
+  background-color: #FF6B6B !important;
+  color: #fff !important;
+}
+
+.rbc-event.completada {
+  background-color: #2A6FB0 !important;
+  color: #fff !important;
+}
+
+.rbc-event.completada.receta {
+  background-color: #1f4ed8 !important; /* azul intenso para citas con receta */
+}
+
+/* Celdas del calendario */
+.rbc-day-bg {
+  transition: background-color 0.2s ease;
+}
+
+.rbc-day-bg:hover {
+  background-color: #f4f7f9;
+}
+
+/* Vista agenda */
+.rbc-agenda-view table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.rbc-agenda-view th {
+  background-color: #2A6FB0;
+  color: #fff;
+  padding: 8px;
+  text-align: left;
+}
+
+.rbc-agenda-view td {
+  padding: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
