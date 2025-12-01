@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Cambia localhost por la URL de tu backend live
 const API = axios.create({
-  baseURL: 'https://vita-backend-czgo.onrender.com/api/web', 
+  baseURL: 'https://vita-backend-czgo.onrender.com/api/web',
 });
 
 API.interceptors.request.use((req) => {

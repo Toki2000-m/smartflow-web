@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../api';
-import { io } from 'socket.io-client';
+import socket from '../config/socket'; // ✅ Importar socket configurado
 import './Navbar.css';
 
 export default function Navbar({ nombre, onLogout }) {
@@ -15,23 +15,30 @@ export default function Navbar({ nombre, onLogout }) {
     return () => clearInterval(interval);
   }, []);
 
-  // Conexión socket
+  // Conexión socket (ahora usa el socket importado)
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     if (!user) return;
 
-    const socket = io('http://localhost:3000');
+    // Unirse a la sala del usuario
     socket.emit('join', user.id);
 
-    socket.on('nuevaNotificacion', (noti) => {
+    // Escuchar nuevas notificaciones
+    const handleNuevaNotificacion = (noti) => {
+      console.log('📩 Nueva notificación recibida:', noti);
       setNotificaciones(prev => {
         const existe = prev.some(n => n._id === noti._id);
         if (existe) return prev;
         return [{ ...noti, leida: false }, ...prev];
       });
-    });
+    };
 
-    return () => socket.disconnect();
+    socket.on('nuevaNotificacion', handleNuevaNotificacion);
+
+    // Cleanup: solo remover el listener, NO desconectar el socket
+    return () => {
+      socket.off('nuevaNotificacion', handleNuevaNotificacion);
+    };
   }, []);
 
   // Obtener notificaciones del backend
@@ -64,7 +71,7 @@ export default function Navbar({ nombre, onLogout }) {
     setOpen(nuevoEstado);
     if (nuevoEstado) {
       await marcarLeidas();
-      setUltimaLectura(new Date()); // ← marca el momento en que se abrió
+      setUltimaLectura(new Date());
     }
   };
 
